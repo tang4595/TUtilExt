@@ -9,14 +9,12 @@ import UIKit
 
 extension Array where Iterator.Element == UIView {
     
-    public func asStackView(
-        axis: NSLayoutConstraint.Axis = .horizontal, 
-        distribution: UIStackView.Distribution = .fill,
-        spacing: CGFloat = 0,
-        contentHuggingPriority: UILayoutPriority? = nil,
-        perpendicularContentHuggingPriority: UILayoutPriority? = nil,
-        alignment: UIStackView.Alignment = .fill
-    ) -> UIStackView {
+    public func asStackView(axis: NSLayoutConstraint.Axis = .horizontal,
+                            distribution: UIStackView.Distribution = .fill,
+                            spacing: CGFloat = 0,
+                            contentHuggingPriority: UILayoutPriority? = nil,
+                            perpendicularContentHuggingPriority: UILayoutPriority? = nil,
+                            alignment: UIStackView.Alignment = .fill) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: self)
         stackView.axis = axis
         stackView.distribution = distribution

@@ -9,7 +9,11 @@ import UIKit
 
 public extension UILabel {
     
-    @objc convenience init(text: String? = nil, textColor: UIColor, font: UIFont, textAlignment:NSTextAlignment = .left, multiLines: Bool = false) {
+    @objc convenience init(text: String? = nil, 
+                           textColor: UIColor,
+                           font: UIFont,
+                           textAlignment:NSTextAlignment = .left,
+                           multiLines: Bool = false) {
         self.init(frame: .zero)
         self.text = text
         self.textColor = textColor
@@ -18,7 +22,10 @@ public extension UILabel {
         self.numberOfLines = multiLines ? 0 : 1
     }
     
-    @objc convenience init(text: String? = nil, textColor: UIColor, font: UIFont, multiLines: Bool = false) {
+    @objc convenience init(text: String? = nil, 
+                           textColor: UIColor,
+                           font: UIFont,
+                           multiLines: Bool = false) {
         self.init(frame: .zero)
         self.text = text
         self.textColor = textColor

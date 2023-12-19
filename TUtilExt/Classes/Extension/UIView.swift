@@ -110,7 +110,9 @@ public extension UIView {
         }
     }
     
-    func addGradientLayer(_ direction: GradientLayerDirection = .topToBottom, colors: [UIColor], sendToBack: Bool = false) {
+    func addGradientLayer(_ direction: GradientLayerDirection = .topToBottom, 
+                          colors: [UIColor],
+                          sendToBack: Bool = false) {
         guard let cf = colors.first?.cgColor else {return}
         let cs = colors.last?.cgColor ?? cf
         let gradientLayer = CAGradientLayer()
@@ -133,13 +135,11 @@ public extension UIView {
 public extension UIView {
     
     @discardableResult
-    func addDashedBorder(
-        width: CGFloat,
-        length: CGFloat,
-        space: CGFloat,
-        cornerRadius: CGFloat,
-        color: UIColor
-    ) -> CAShapeLayer {
+    func addDashedBorder(width: CGFloat,
+                         length: CGFloat,
+                         space: CGFloat,
+                         cornerRadius: CGFloat,
+                         color: UIColor) -> CAShapeLayer {
         self.layer.cornerRadius = cornerRadius
         let borderLayer =  CAShapeLayer()
         borderLayer.bounds = self.bounds

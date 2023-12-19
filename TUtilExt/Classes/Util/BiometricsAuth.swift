@@ -14,7 +14,9 @@ public class BiometricsAuth {
         case failure ,cancel ,success ,authFailed, userFallback
     }
 
-    public class func auth(_ reason: String, fallBackTitle: String = "Password", completeClosure: ((AuthResult) -> Void)?) -> Void {
+    public class func auth(_ reason: String, 
+                           fallBackTitle: String = "Password",
+                           completeClosure: ((AuthResult) -> Void)?) -> Void {
         let context = LAContext()
         var error: NSError?
         guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {

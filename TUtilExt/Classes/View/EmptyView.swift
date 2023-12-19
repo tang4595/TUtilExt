@@ -58,12 +58,11 @@ open class EmptyView: UIView {
     
     private func uiSetup() {
         backgroundColor = .clear
-        addSubviews([iconImageView, titleLbl])
-        iconImageView.snp.makeConstraints { make in
+        iconImageView.add(to: self).layout { make in
             make.centerX.centerY.equalToSuperview()
             make.size.equalTo(CGSize(width: 215.0, height: 193.0))
         }
-        titleLbl.snp.makeConstraints { make in
+        titleLbl.add(to: self).layout { make in
             make.top.equalTo(iconImageView.snp.bottom).offset(12.0)
             make.left.right.equalToSuperview().inset(LayoutStyle.sideMargin)
         }

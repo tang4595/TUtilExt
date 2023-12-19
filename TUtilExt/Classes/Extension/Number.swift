@@ -246,6 +246,7 @@ public extension NSNumber {
         let doubleString = String(format: "%@", self)
         return NSDecimalNumber(string: doubleString)
     }
+    
     ///<
     func l(_ other: NSNumber) -> Bool {
         return self.decimal.compare(other.decimal) == .orderedAscending
@@ -302,14 +303,12 @@ public extension NSNumber {
     }
 
     func round(_ roundingMode: NSDecimalNumber.RoundingMode, scale: Int) -> NSNumber {
-        let behaviors = NSDecimalNumberHandler(
-            roundingMode: roundingMode, 
-            scale: Int16(scale),
-            raiseOnExactness: false,
-            raiseOnOverflow: false,
-            raiseOnUnderflow: false,
-            raiseOnDivideByZero: false
-        )
+        let behaviors = NSDecimalNumberHandler(roundingMode: roundingMode,
+                                               scale: Int16(scale),
+                                               raiseOnExactness: false,
+                                               raiseOnOverflow: false,
+                                               raiseOnUnderflow: false,
+                                               raiseOnDivideByZero: false)
         return self.decimal.rounding(accordingToBehavior: behaviors)
     }
 

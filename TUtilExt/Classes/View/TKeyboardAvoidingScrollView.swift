@@ -36,11 +36,8 @@ public class TKeyboardAvoidingScrollView: TPKeyboardAvoidingScrollView {
     }
     
     private func setup() {
-        addSubview(contentView)
-        contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
+        contentView.add(to: self).layout { make in
+            make.edges.width.height.equalToSuperview()
         }
         
         self.rx.willBeginDragging.subscribe(onNext: { [weak self] (_) in

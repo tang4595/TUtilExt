@@ -150,6 +150,7 @@ private extension TPropertyCache.Effect {
             let fileName = key.md5()
             saveAsMemory(fileName, value: newValue)
         }
+        
         TPropertyCache.handleQueue.async {
             let fileName = key.md5()
             let path = TPropertyCache.fileCacheDirPath.appendingPathComponent(fileName)

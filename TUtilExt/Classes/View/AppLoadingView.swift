@@ -44,12 +44,11 @@ public class AppLoadingView: UIView {
     private func uiSetup() {
         container.backgroundColor = .black.withAlphaComponent(0.9)
         container.cornerRadius = 10.0
-        addSubview(container)
-        container.snp.makeConstraints { make in
+        container.add(to: self).layout { make in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: style.containerSize, height: style.containerSize))
         }
-        indicator.snp.makeConstraints { make in
+        indicator.add(to: container).layout { make in
             make.center.equalToSuperview()
         }
     }
@@ -65,7 +64,6 @@ public class AppLoadingView: UIView {
         let view = UIActivityIndicatorView(style: style)
         view.hidesWhenStopped = true
         view.startAnimating()
-        container.addSubview(view)
         return view
     }()
 }

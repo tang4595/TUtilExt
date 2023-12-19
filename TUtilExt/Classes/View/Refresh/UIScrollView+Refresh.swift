@@ -59,7 +59,7 @@ public extension Reactive where Base: UIScrollView {
         let source3 = didEndScrollingAnimation.map({_ in false })
         let source4 = didEndDecelerating.map({_ in false})
         let source5 = didEndDragging.map({$0})
-        return ControlProperty(values: Observable<Bool>.merge([source1,source2,source3,source4,source5]), valueSink: bindingObserver)
+        return ControlProperty(values: Observable<Bool>.merge([source1, source2, source3, source4, source5]), valueSink: bindingObserver)
     }
 }
 

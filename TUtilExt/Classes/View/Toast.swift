@@ -40,7 +40,7 @@ public class Toast: UIView {
         case bottomToCenter
     }
     
-    public enum TType {
+    public enum `Type` {
         case info(message: String)
         case error(message: String)
         case custom(message: String, icon: Icon, animation: Animation = .centerScale)
@@ -135,7 +135,7 @@ public class Toast: UIView {
         }
     }
     
-    private var type: TType = .info(message: "")
+    private var type: `Type` = .info(message: "")
     private var icon: UIImage?
     private var animation: Animation?
     private var container: Container!
@@ -151,15 +151,14 @@ public class Toast: UIView {
         let view = UIView()
         view.backgroundColor = .black.withAlphaComponent(0.8)
         view.cornerRadius = 4.0
-        view.addSubview(label)
-        label.snp.makeConstraints { make in
+        label.add(to: view).layout { make in
             make.left.right.equalToSuperview().inset(LayoutStyle.sideMargin)
             make.top.bottom.equalToSuperview().inset(8.0)
         }
         return view
     }()
     
-    convenience init(_ type: TType, container: Container!) {
+    convenience init(_ type: `Type`, container: Container!) {
         self.init()
         self.type = type
         self.container = container
@@ -173,10 +172,9 @@ public class Toast: UIView {
         }
         backgroundColor = .clear
         isUserInteractionEnabled = false
-        addSubview(contentView)
         
         label.text = message
-        contentView.snp.makeConstraints { [weak self] make in
+        contentView.add(to: self).layout { [weak self] make in
             guard let self = self else {return}
             switch self.type.animation {
             case .centerScale, .none:
@@ -212,8 +210,7 @@ public class Toast: UIView {
         guard let window = UIApplication.shared.keyWindow else {
             return
         }
-        window.addSubview(view)
-        view.snp.makeConstraints { make in
+        view.add(to: window).layout { make in
             make.edges.equalToSuperview()
         }
     }
@@ -223,19 +220,18 @@ public class Toast: UIView {
 
 public extension Toast {
     
-    private static func doCustom(_ type: TType, container: Container = .window) {
+    private static func doCustom(_ type: `Type`, container: Container = .window) {
         guard DispatchQueue.isMainQueue else {return}
         loading(false)
         let toast = Toast(type, container: container)
         toast.isHidden = true
-        container.value.addSubview(toast)
-        toast.snp.makeConstraints { make in
+        toast.add(to: container.value).layout { make in
             make.edges.equalToSuperview()
         }
         toast.show(toast)
     }
     
-    static func custom(_ type: TType, container: Container = .window) {
+    static func custom(_ type: `Type`, container: Container = .window) {
         if DispatchQueue.isMainQueue {
             doCustom(type, container: container)
         } else {

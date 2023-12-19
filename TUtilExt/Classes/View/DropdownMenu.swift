@@ -26,8 +26,7 @@ public class DropdownMenuView: UIView {
         let view = UIView()
         view.backgroundColor = .c4
         view.cornerRadius = 5.0
-        view.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
+        stackView.add(to: view).layout { make in
             make.edges.equalToSuperview()
         }
         return view
@@ -84,7 +83,7 @@ public class DropdownMenuView: UIView {
     
     public func show() -> PublishSubject<Int> {
         UIApplication.shared.keyWindow?.addSubview(self)
-        self.snp.makeConstraints { make in
+        self.layout { make in
             make.edges.equalToSuperview()
         }
         return subject
@@ -98,10 +97,8 @@ public class DropdownMenuView: UIView {
     
     private func uiSetup() {
         backgroundColor = .clear
-        addSubview(bgView)
-        bgView.addSubview(contentView)
         let point = tapBtn?.convert(tapBtn.bounds, to: UIApplication.shared.keyWindow)
-        bgView.snp.makeConstraints { make in
+        bgView.add(to: self).layout { make in
             if self.isLeft == true {
                 make.left.equalTo(point?.minX ?? 0)
             } else {
@@ -112,7 +109,7 @@ public class DropdownMenuView: UIView {
             }
             make.top.equalTo((point?.maxY ?? 0 ) + topOffset)
         }
-        contentView.snp.makeConstraints { make in
+        contentView.add(to: bgView).layout { make in
             make.edges.equalToSuperview()
         }
     }
@@ -159,15 +156,14 @@ class DropdownMenuViewItem: UIView {
     }
     
     func uiSetup() {
-        addSubviews([titleLabel, line])
-        titleLabel.snp.makeConstraints { make in
+        titleLabel.add(to: self).layout { make in
             make.left.right.equalToSuperview().inset(8.0)
             make.top.bottom.equalToSuperview()
             make.width.lessThanOrEqualTo(kScreenWidth * 0.8)
             make.width.greaterThanOrEqualTo(100.0)
             make.height.equalTo(44.0)
         }
-        line.snp.makeConstraints { make in
+        line.add(to: self).layout { make in
             make.bottom.equalToSuperview()
             make.height.equalTo(0.5)
         }

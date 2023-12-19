@@ -21,9 +21,7 @@ public class AppTextField: UITextField {
 public extension AppTextField {
     
     var maxLength: Int? {
-        get {
-            return objc_getAssociatedObject(self, &kStorageKeyMaxLength) as? Int
-        }
+        get { objc_getAssociatedObject(self, &kStorageKeyMaxLength) as? Int }
         set {
             addObserve()
             objc_setAssociatedObject(self, &kStorageKeyMaxLength, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -31,12 +29,8 @@ public extension AppTextField {
     }
     
     var doubleCountChinese: Bool? {
-        get {
-            return objc_getAssociatedObject(self, &kStorageKeyDoubleCountChinese) as? Bool
-        }
-        set {
-            objc_setAssociatedObject(self, &kStorageKeyDoubleCountChinese, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
+        get { objc_getAssociatedObject(self, &kStorageKeyDoubleCountChinese) as? Bool }
+        set { objc_setAssociatedObject(self, &kStorageKeyDoubleCountChinese, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
     
     func addObserve() {

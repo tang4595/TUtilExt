@@ -335,15 +335,13 @@ public extension NSMutableAttributedString {
 
 extension Array where Iterator.Element == String {
     
-    func listAttributedString(
-        font: UIFont,
-        bullet: String = "\u{2022}",
-        indentation: CGFloat = 20,
-        lineSpacing: CGFloat = 6,
-        paragraphSpacing: CGFloat = 0,
-        textColor: UIColor = UIColor.black,
-        bulletColor: UIColor = UIColor.black
-    ) -> NSAttributedString {
+    func listAttributedString(font: UIFont,
+                              bullet: String = "\u{2022}",
+                              indentation: CGFloat = 20,
+                              lineSpacing: CGFloat = 6,
+                              paragraphSpacing: CGFloat = 0,
+                              textColor: UIColor = UIColor.black,
+                              bulletColor: UIColor = UIColor.black) -> NSAttributedString {
         let textAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: textColor]
         let bulletAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: bulletColor]
 
@@ -373,13 +371,11 @@ extension Array where Iterator.Element == String {
 
 extension Array where Iterator.Element == NSAttributedString {
     
-    func listAttributedString(
-        bullet: String = "\u{2022}",
-        indentation: CGFloat = 20,
-        lineSpacing: CGFloat = 8,
-        paragraphSpacing: CGFloat = 0,
-        bulletColor: UIColor = UIColor.black
-    ) -> NSAttributedString {
+    func listAttributedString(bullet: String = "\u{2022}",
+                              indentation: CGFloat = 20,
+                              lineSpacing: CGFloat = 8,
+                              paragraphSpacing: CGFloat = 0,
+                              bulletColor: UIColor = UIColor.black) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
         let nonOptions = [NSTextTab.OptionKey: Any]()
         paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: indentation, options: nonOptions)]

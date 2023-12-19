@@ -20,14 +20,12 @@ public class ScrollableStackView: UIView {
     public var spacing: CGFloat = 0
     public var showIndicator: Bool = true
     
-    public convenience init(
-        withArrangedSubviews arrangedSubviews: [UIView],
-        distribution: UIStackView.Distribution,
-        alignment: UIStackView.Alignment,
-        axis: NSLayoutConstraint.Axis,
-        spacing: CGFloat,
-        showIndicator: Bool = true
-    ) {
+    public convenience init(withArrangedSubviews arrangedSubviews: [UIView],
+                            distribution: UIStackView.Distribution,
+                            alignment: UIStackView.Alignment,
+                            axis: NSLayoutConstraint.Axis,
+                            spacing: CGFloat,
+                            showIndicator: Bool = true) {
         self.init()
         self.arrangedSubviews = arrangedSubviews
         self.arrangedSubviews = arrangedSubviews
@@ -41,7 +39,7 @@ public class ScrollableStackView: UIView {
     }
     
     private func uiSetup() {
-        scrollView.snp.makeConstraints { make in
+        scrollView.add(to: self).layout { make in
             make.edges.equalToSuperview()
         }
         setNeedsLayout()
@@ -65,12 +63,10 @@ public class ScrollableStackView: UIView {
         let view = TKeyboardAvoidingScrollView()
         view.showsVerticalScrollIndicator = self.showIndicator
         view.showsHorizontalScrollIndicator = self.showIndicator
-        view.contentView.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
+        stackView.add(to: view.contentView).layout { make in
             make.top.left.right.equalToSuperview()
             make.width.equalToSuperview()
         }
-        self.addSubview(view)
         return view
     }()
     
@@ -86,8 +82,9 @@ public class ScrollableStackView: UIView {
 
 // MARK: - Public
 public extension ScrollableStackView {
+    
     func updateContentSize() {
-        scrollView.contentView.snp.updateConstraints { make in
+        scrollView.contentView.layout(.update) { make in
             make.height.equalToSuperview().offset(stackView.height - scrollView.height)
         }
     }
@@ -126,6 +123,7 @@ public extension ScrollableStackView {
 }
 
 public extension Reactive where Base: ScrollableStackView {
+    
     var dataSource: Binder<[UIView]> {
         return Binder<[UIView]>(base) { (base, value) in
             base.setArrangedSubviews(subviews: value)

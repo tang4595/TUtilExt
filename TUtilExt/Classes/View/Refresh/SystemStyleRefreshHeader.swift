@@ -60,13 +60,16 @@ public class SystemStyleRefreshHeader: MJRefreshStateHeader {
         }
         endRefreshingAction()
     }
+}
+
+private extension SystemStyleRefreshHeader {
     
     private func startRefreshingAnimation() {
         refreshIndicator?.isHidden = false
         refreshIndicator?.startAnimating()
     }
     
-    @objc private func endRefreshingAction() {
+    private func endRefreshingAction() {
         state = .idle
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
             self.refreshIndicator?.stopAnimating()
@@ -98,8 +101,7 @@ public class SystemStyleRefreshHeader: MJRefreshStateHeader {
             refreshIndicator = UIActivityIndicatorView(style: .gray)
         }
         guard let refreshIndicator = refreshIndicator else {return}
-        addSubview(refreshIndicator)
-        refreshIndicator.snp.makeConstraints { make in
+        refreshIndicator.add(to: self).layout { make in
             make.center.equalToSuperview()
         }
     }

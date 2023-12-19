@@ -37,7 +37,7 @@ public class AppAlertView: UIView {
     private var alertView: (AppAlertProtocol & UIView)?
     private let subject = PublishSubject<Any>()
     
-    lazy var container: UIView = {
+    private lazy var container: UIView = {
         let container = UIView()
         container.backgroundColor = UIColor.clear
         container.clipsToBounds = true
@@ -58,18 +58,23 @@ public class AppAlertView: UIView {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+}
+
+// MARK: Private
+
+private extension AppAlertView {
     
-    func binds() -> Void {
+    func binds() {
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         center.addObserver(self, selector: #selector(keyboardWillDismiss(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         self.subject.subscribe(onNext: { [weak self] _ in
-            self?.hide()
+            self?.hideSelf()
         }).disposed(by: self.disposeBag)
     }
     
-    func addContent(alert: AppAlertProtocol & UIView) -> Void {
+    func addContent(alert: AppAlertProtocol & UIView) {
         self.alertView = alert
         self.alertView?.subject = subject
         self.container.addSubview(alert)
@@ -78,28 +83,28 @@ public class AppAlertView: UIView {
         control.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         self.addSubview(control)
         self.addSubview(self.container)
-        control.snp.makeConstraints { (make) in
+        control.layout { (make) in
             make.top.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         control.rx.tap.subscribe(onNext: { [weak self] _ in
             if self?.alertView?.dismissWhenTapBackground ?? false {
                 self?.subject.onError(AppError.ui(.custom(error: "Canceled")))
-                self?.hide()
+                self?.hideSelf()
             }
         }).disposed(by: self.disposeBag)
         
-        alert.snp.makeConstraints { (make) in
+        alert.layout { (make) in
             make.edges.equalToSuperview()
         }
         
         switch self.alertView?.animate {
         case .center:
-            self.container.snp.makeConstraints { (make) in
+            self.container.layout { (make) in
                 make.center.equalToSuperview()
             }
         case .bottom:
-            self.container.snp.makeConstraints { (make) in
+            self.container.layout { (make) in
                 make.left.right.bottom.equalToSuperview()
             }
         case .none:
@@ -107,7 +112,7 @@ public class AppAlertView: UIView {
         }
     }
     
-    func show(withAnimation animation: Bool = true) -> Void {
+    func show(withAnimation animation: Bool = true) {
         guard animation else {
             self.container.alpha = 1.0
             self.container.transform = CGAffineTransform.identity
@@ -142,7 +147,7 @@ public class AppAlertView: UIView {
         }
     }
     
-    func hide() -> Void {
+    func hideSelf() {
         switch self.alertView?.animate {
         case .center:
             UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
@@ -165,6 +170,8 @@ public class AppAlertView: UIView {
         }
     }
 }
+
+// MARK: Public
 
 public extension AppAlertView {
     
@@ -219,5 +226,9 @@ public extension AppAlertView {
         window?.addSubview(alert)
         alert.show(withAnimation: !contained)
         return alert.subject
+    }
+    
+    func hide() {
+        hideSelf()
     }
 }
