@@ -13,7 +13,6 @@ import TAppBase
 import SnapKit
 
 public extension UIScreen {
-    
     static let height: CGFloat = UIScreen.main.bounds.height
     static let width: CGFloat = UIScreen.main.bounds.width
 }
@@ -21,7 +20,6 @@ public extension UIScreen {
 // MARK: Layout
 
 public extension UIView {
-    
     enum LayoutAction {
         case make
         case update

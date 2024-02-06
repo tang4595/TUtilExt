@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: Generic Util
+
 public let kSafeBottom = ((UIScreen.main.bounds.size.height >= 812.0) ? 34.0 : 0.0)
 public let kSafeTop = CGFloat((UIScreen.main.bounds.size.height >= 812.0) ? 24.0 : 0.0)
 public let kScreenWidth = UIScreen.main.bounds.size.width
@@ -18,10 +20,26 @@ public let kTopHeight = kStatusBarHeight + 44
 public let kPScale = UIScreen.main.bounds.size.width / 375.0
 public let kBottomHeight = kSafeBottom + 49
 
-public func K375(_ value:CGFloat) -> CGFloat {
-    return value * kPScale
+public func k375(_ value: CGFloat) -> CGFloat { value * kPScale }
+
+// MARK: Safe Area Util
+
+public struct SafeAreaUtilWrapper<T> {
+    var base: T
+    init(_ base: T) {
+        self.base = base
+    }
 }
 
-public func safeBottomInset(_ value: CGFloat) -> CGFloat {
-    return kSafeBottom + value
+public protocol SafeAreaUtilConvertable {}
+public extension SafeAreaUtilConvertable {
+    var safeArea: SafeAreaUtilWrapper<Self> { SafeAreaUtilWrapper(self) }
+}
+
+extension CGFloat: SafeAreaUtilConvertable {}
+extension Double: SafeAreaUtilConvertable {}
+public extension SafeAreaUtilWrapper where T == CGFloat {
+    
+    var topOffset: CGFloat { kSafeTop > 0 ? kSafeTop + base : base }
+    var bottomInset: CGFloat { kSafeBottom > 0 ? kSafeBottom + base : base }
 }

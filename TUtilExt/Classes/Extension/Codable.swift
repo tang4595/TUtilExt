@@ -149,7 +149,7 @@ public extension Array {
         }
         
         if let data = try? JSONSerialization.data(withJSONObject: list, options: [.init(rawValue: 0)]),
-            let JSONString = NSString(data:data, encoding: String.Encoding.utf8.rawValue) {
+           let JSONString = NSString(data:data, encoding: String.Encoding.utf8.rawValue) {
             return JSONString as String
         }
         return nil

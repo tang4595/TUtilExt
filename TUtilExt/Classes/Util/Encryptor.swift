@@ -25,7 +25,6 @@ public struct EncryptorKeyPair {
 }
 
 private extension EncryptorKeyPair.ECKeyPair {
-    
     static var apiDefault: Self = .init(aesKey: "a[-f..^xAha_L1-.", aesIv: "_a6]/-a`j-.|yunb")
     static var localDefault: Self = .init(aesKey: "a[,c.?^RDhn_T6-1", aesIv: "-A1]-/r`er.|jkfa")
 }

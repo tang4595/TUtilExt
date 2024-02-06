@@ -12,7 +12,6 @@ fileprivate var kStorageKeyDoubleCountChinese: Void?
 fileprivate var kStorageKeyObserver: Void?
 
 public class AppTextField: UITextField {
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
