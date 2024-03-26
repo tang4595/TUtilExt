@@ -37,9 +37,13 @@ public extension SafeAreaUtilConvertable {
 }
 
 extension CGFloat: SafeAreaUtilConvertable {}
-extension Double: SafeAreaUtilConvertable {}
 public extension SafeAreaUtilWrapper where T == CGFloat {
-    
     var topOffset: CGFloat { kSafeTop > 0 ? kSafeTop + base : base }
     var bottomInset: CGFloat { kSafeBottom > 0 ? kSafeBottom + base : base }
+}
+
+extension Double: SafeAreaUtilConvertable {}
+public extension SafeAreaUtilWrapper where T == Double {
+    var topOffset: Double { kSafeTop > 0 ? kSafeTop + base : base }
+    var bottomInset: Double { kSafeBottom > 0 ? kSafeBottom + base : base }
 }
