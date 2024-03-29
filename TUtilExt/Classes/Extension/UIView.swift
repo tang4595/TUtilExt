@@ -12,11 +12,6 @@ import RxCocoa
 import TAppBase
 import SnapKit
 
-public extension UIScreen {
-    static let height: CGFloat = UIScreen.main.bounds.height
-    static let width: CGFloat = UIScreen.main.bounds.width
-}
-
 // MARK: Layout
 
 public extension UIView {
@@ -67,6 +62,43 @@ public extension ViewProtocol where Self: UIView {
     @discardableResult
     func `do`(_ handler: (Self) -> Void) -> Self {
         handler(self)
+        return self
+    }
+}
+
+public extension UIView {
+    
+    enum ConstraintPriorityDirection {
+        case v, h
+        var axis: NSLayoutConstraint.Axis {
+            switch self {
+            case .v: return .vertical
+            case .h: return .horizontal
+            }
+        }
+    }
+    
+    @discardableResult
+    func setHigherHugging(_ direction: UIView.ConstraintPriorityDirection, more: Float = 0) -> Self {
+        self.setContentHuggingPriority(.defaultHigh + more, for: direction.axis)
+        return self
+    }
+    
+    @discardableResult
+    func setLowerHugging(_ direction: UIView.ConstraintPriorityDirection, less: Float = 0) -> Self {
+        self.setContentHuggingPriority(.defaultLow - less, for: direction.axis)
+        return self
+    }
+    
+    @discardableResult
+    func setHigherCompress(_ direction: UIView.ConstraintPriorityDirection, more: Float = 0) -> Self {
+        self.setContentCompressionResistancePriority(.defaultHigh + more, for: direction.axis)
+        return self
+    }
+    
+    @discardableResult
+    func setLowerCompress(_ direction: UIView.ConstraintPriorityDirection, less: Float = 0) -> Self {
+        self.setContentCompressionResistancePriority(.defaultLow - less, for: direction.axis)
         return self
     }
 }
@@ -154,6 +186,26 @@ public extension UIView {
         self.layer.addSublayer(borderLayer)
         return borderLayer
    }
+}
+
+public class CenterContentView<T>: UIView where T: UIView {
+    
+    public let contentView: T
+    
+    public init(_ contentView: T, offset: CGPoint = .zero) {
+        self.contentView = contentView
+        super.init(frame: .zero)
+        backgroundColor = .white
+        addSubview(contentView)
+        contentView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview().offset(offset.x)
+            make.centerY.equalToSuperview().offset(offset.y)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 // MARK: Event

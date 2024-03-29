@@ -102,7 +102,7 @@ public class DropdownMenuView: UIView {
             if self.isLeft == true {
                 make.left.equalTo(point?.minX ?? 0)
             } else {
-                make.right.equalTo((point?.maxX ?? 0) - kScreenWidth)
+                make.right.equalTo((point?.maxX ?? 0) - UIScreen.width)
             }
             if let customMenuWidth = customMenuWidth {
                 make.width.equalTo(customMenuWidth)
@@ -159,7 +159,7 @@ class DropdownMenuViewItem: UIView {
         titleLabel.add(to: self).layout { make in
             make.left.right.equalToSuperview().inset(8.0)
             make.top.bottom.equalToSuperview()
-            make.width.lessThanOrEqualTo(kScreenWidth * 0.8)
+            make.width.lessThanOrEqualTo(UIScreen.width * 0.8)
             make.width.greaterThanOrEqualTo(100.0)
             make.height.equalTo(44.0)
         }

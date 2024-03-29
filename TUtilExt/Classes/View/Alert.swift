@@ -133,7 +133,7 @@ private extension AppAlertView {
                 self.alertView?.viewDidAppear()
             }
         case .bottom:
-            self.container.transform = CGAffineTransform(translationX: 0, y: kScreenHeight)
+            self.container.transform = CGAffineTransform(translationX: 0, y: UIScreen.height)
             self.container.alpha = 0
             UIView.animate(withDuration: 0.3, animations: {
                 self.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -160,7 +160,7 @@ private extension AppAlertView {
         case .bottom:
             UIView.animate(withDuration: 0.2, animations: {
                 self.backgroundColor = .clear
-                self.container.transform = CGAffineTransform(translationX: 0, y: kScreenHeight)
+                self.container.transform = CGAffineTransform(translationX: 0, y: UIScreen.height)
                 self.container.alpha = 0
             }) { _ in
                 self.removeFromSuperview()
@@ -188,7 +188,7 @@ public extension AppAlertView {
             contentMaxY = contentView.convert(CGPoint(x: 0, y: contentView.bounds.height), to: window)
         }
         
-        var offsetY = -keyboardH + CGFloat(kSafeBottom)
+        var offsetY = -keyboardH + CGFloat(UIScreen.safeAreaInsetsBottom)
         if let keyboardMinY = keyboardRect?.minY {
             if contentMaxY.y <= keyboardMinY {
                 offsetY = -keyboardPadding
