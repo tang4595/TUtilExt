@@ -25,7 +25,7 @@ public class DropdownMenuView: UIView {
     private lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .c4
-        view.cornerRadius = 5.0
+        view.layerCornerRadius = 5.0
         stackView.add(to: view).layout { make in
             make.edges.equalToSuperview()
         }
