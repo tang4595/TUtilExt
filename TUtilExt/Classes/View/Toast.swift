@@ -150,7 +150,7 @@ public class Toast: UIView {
     private lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .black.withAlphaComponent(0.8)
-        view.cornerRadius = 4.0
+        view.layerCornerRadius = 4.0
         label.add(to: view).layout { make in
             make.left.right.equalToSuperview().inset(LayoutStyle.sideMargin)
             make.top.bottom.equalToSuperview().inset(8.0)
