@@ -43,7 +43,7 @@ public class AppLoadingView: UIView {
     
     private func uiSetup() {
         container.backgroundColor = .black.withAlphaComponent(0.9)
-        container.cornerRadius = 10.0
+        container.layerCornerRadius = 10.0
         container.add(to: self).layout { make in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: style.containerSize, height: style.containerSize))
