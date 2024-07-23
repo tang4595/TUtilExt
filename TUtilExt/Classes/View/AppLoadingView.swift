@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwifterSwift
 import SnapKit
 
 extension UIActivityIndicatorView.Style {
@@ -43,7 +42,8 @@ public class AppLoadingView: UIView {
     
     private func uiSetup() {
         container.backgroundColor = .black.withAlphaComponent(0.9)
-        container.layerCornerRadius = 10.0
+        container.layer.cornerRadius = 10.0
+        container.layer.masksToBounds = true
         container.add(to: self).layout { make in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: style.containerSize, height: style.containerSize))

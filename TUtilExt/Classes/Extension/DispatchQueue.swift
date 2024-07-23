@@ -8,6 +8,7 @@
 import Foundation
 import Dispatch
 import RxSwift
+import TAppBase
 
 public func DispatchAQueue(
     _ label: String, qos: DispatchQoS = .unspecified,

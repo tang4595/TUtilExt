@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TAppBase
 
 // MARK: - Default Value Annotation
 public protocol CodableDefaultValue {

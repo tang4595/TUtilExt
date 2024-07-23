@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TAppBase
 
 var isDebug: Bool {
     #if DEBUG

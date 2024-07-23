@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TAppBase
 
 public let kNumberFormatDecimalLengthMax: Int = 4
 

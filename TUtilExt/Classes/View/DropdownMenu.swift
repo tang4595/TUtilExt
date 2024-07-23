@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
-import SwifterSwift
+
 import TAppBase
 
 public class DropdownMenuView: UIView {
@@ -25,7 +25,8 @@ public class DropdownMenuView: UIView {
     private lazy var contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .c4
-        view.layerCornerRadius = 5.0
+        view.layer.cornerRadius = 5.0
+        view.layer.masksToBounds = true
         stackView.add(to: view).layout { make in
             make.edges.equalToSuperview()
         }

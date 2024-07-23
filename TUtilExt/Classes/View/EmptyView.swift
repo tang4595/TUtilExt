@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import TAppBase
-import SwifterSwift
 
 open class EmptyView: UIView {
     

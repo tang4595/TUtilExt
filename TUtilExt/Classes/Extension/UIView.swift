@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwifterSwift
 import RxSwift
 import RxCocoa
 import TAppBase

@@ -9,6 +9,7 @@ import UIKit
 import RTRootNavigationController
 import TAppBase
 import SafariServices
+import TAppBase
 
 public extension UIApplication {
     
