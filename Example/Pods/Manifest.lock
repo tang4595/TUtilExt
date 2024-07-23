@@ -1,0 +1,71 @@
+PODS:
+  - CryptoSwift (1.8.2)
+  - MJRefresh (3.7.9)
+  - RTRootNavigationController (0.8.1):
+    - RTRootNavigationController/Core (= 0.8.1)
+  - RTRootNavigationController/Core (0.8.1)
+  - RxCocoa (6.7.1):
+    - RxRelay (= 6.7.1)
+    - RxSwift (= 6.7.1)
+  - RxRelay (6.7.1):
+    - RxSwift (= 6.7.1)
+  - RxSwift (6.7.1)
+  - SnapKit (5.7.1)
+  - TAppBase (0.0.1):
+    - RTRootNavigationController
+    - RxCocoa
+    - RxSwift
+    - SnapKit
+    - TPKeyboardAvoiding
+  - TPKeyboardAvoiding (1.3.5)
+  - TUtilExt (0.0.1):
+    - CryptoSwift
+    - MJRefresh
+    - RTRootNavigationController
+    - RxCocoa
+    - RxSwift
+    - SnapKit
+    - TAppBase
+    - TPKeyboardAvoiding
+
+DEPENDENCIES:
+  - TAppBase (from `https://github.com/tang4595/TAppBase.git`)
+  - TUtilExt (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - CryptoSwift
+    - MJRefresh
+    - RTRootNavigationController
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - TPKeyboardAvoiding
+
+EXTERNAL SOURCES:
+  TAppBase:
+    :git: https://github.com/tang4595/TAppBase.git
+  TUtilExt:
+    :path: "../"
+
+CHECKOUT OPTIONS:
+  TAppBase:
+    :commit: 67b35179d3960f11541b2384e23d38318b86c6fd
+    :git: https://github.com/tang4595/TAppBase.git
+
+SPEC CHECKSUMS:
+  CryptoSwift: c63a805d8bb5e5538e88af4e44bb537776af11ea
+  MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
+  RTRootNavigationController: ca443783baf6ff65a70c4d21ce0eedbbc1fec1fe
+  RxCocoa: f5609cb4637587a7faa99c5d5787e3ad582b75a4
+  RxRelay: 4151ba01152436b08271e08410135e099880eae5
+  RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  TAppBase: 5794599886a46d749151f5214b63752a82a0c68b
+  TPKeyboardAvoiding: d55b3ea7b362540af8fcf36aa3ed2e87bf210cc6
+  TUtilExt: de3c0cfe5a5ebf3bb1e7f7e767f0c18377eba458
+
+PODFILE CHECKSUM: 27c961ebaf8d7625c6104468f35d75f2aa72a816
+
+COCOAPODS: 1.15.2
