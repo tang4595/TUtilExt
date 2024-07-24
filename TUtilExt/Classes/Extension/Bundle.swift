@@ -85,3 +85,38 @@ public extension Bundle {
         return URL(string: fetchFilePath(fileName: fileName, moduleName: moduleName, bundleName: bundleName))
     }
 }
+
+public extension String {
+    
+    public var image: UIImage? {
+        return UIImage(named: self)
+    }
+    
+    public func image(in bundle: Bundle?) -> UIImage? {
+        return UIImage(named: self, in: bundle, with: nil)
+    }
+    
+    public func language(in bundle: Bundle?) -> String {
+        if let bundle {
+            if !bundle.isLoaded { bundle.load() }
+            let language = "zh-Hans"
+            if let path = bundle.path(forResource: language, ofType: "lproj"), let languageBundle = Bundle(path: path) {
+                return NSLocalizedString(self, tableName: nil, bundle: languageBundle, value: "", comment: "")
+            }
+            return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
+        }
+        return self
+    }
+    
+    public func language(in bundle: Bundle?, args: CVarArg...) -> String {
+        return String(format: language(in: bundle), args)
+    }
+    
+    public func language(in bundle: Bundle?, args: String, args1: String) -> String {
+        return String(format: language(in: bundle), args, args1)
+    }
+    
+    public func language(in bundle: Bundle?, args: String) -> String {
+        return String(format: language(in: bundle), args)
+    }
+}

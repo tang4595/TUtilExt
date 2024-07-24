@@ -4132,41 +4132,6 @@
 			};
 			name = Debug;
 		};
-		245752F817E241F02F832C8B42020CC4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85A722936ACDD0CE05E2C67071D9B19B /* TUtilExt.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TUtilExt/TUtilExt-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TUtilExt/TUtilExt-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/TUtilExt/TUtilExt.modulemap";
-				PRODUCT_MODULE_NAME = TUtilExt;
-				PRODUCT_NAME = TUtilExt;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		2638B46A9F88A42ECAEE7BB9F4F4080A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 243410B9535472556EA4BB6DBC133A0D /* Pods-Example.release.xcconfig */;
@@ -4485,6 +4450,23 @@
 			};
 			name = Release;
 		};
+		51FBF973AC0DD5A547772A2C68AD3C77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FCE4DDADC6EC4448A5EB0603EE698B6 /* TUtilExt.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TUtilExt";
+				IBSC_MODULE = TUtilExt;
+				INFOPLIST_FILE = "Target Support Files/TUtilExt/ResourceBundle-TUtilExtResource-TUtilExt-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = TUtilExtResource;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		5AB0B153EB73669F225AF0D5E0B12486 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E6495FD2E23B443F4591D7957D85E3D /* MJRefresh.debug.xcconfig */;
@@ -4495,76 +4477,6 @@
 				INFOPLIST_FILE = "Target Support Files/MJRefresh/ResourceBundle-MJRefresh.Privacy-MJRefresh-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = MJRefresh.Privacy;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		5B68C3279F8A225E6A3706248A8CD2BE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FCE4DDADC6EC4448A5EB0603EE698B6 /* TUtilExt.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TUtilExt/TUtilExt-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TUtilExt/TUtilExt-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/TUtilExt/TUtilExt.modulemap";
-				PRODUCT_MODULE_NAME = TUtilExt;
-				PRODUCT_NAME = TUtilExt;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		71C7D5755C673493F757FF2C99FBC866 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FCE4DDADC6EC4448A5EB0603EE698B6 /* TUtilExt.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TUtilExt";
-				IBSC_MODULE = TUtilExt;
-				INFOPLIST_FILE = "Target Support Files/TUtilExt/ResourceBundle-TUtilExtResource-TUtilExt-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_NAME = TUtilExtResource;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		78CC0AE27876734AA7B5D8BBC554B03B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85A722936ACDD0CE05E2C67071D9B19B /* TUtilExt.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TUtilExt";
-				IBSC_MODULE = TUtilExt;
-				INFOPLIST_FILE = "Target Support Files/TUtilExt/ResourceBundle-TUtilExtResource-TUtilExt-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_NAME = TUtilExtResource;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4875,6 +4787,23 @@
 			};
 			name = Debug;
 		};
+		B62E30B1C52482A2A893FFF4FA9FA04D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85A722936ACDD0CE05E2C67071D9B19B /* TUtilExt.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TUtilExt";
+				IBSC_MODULE = TUtilExt;
+				INFOPLIST_FILE = "Target Support Files/TUtilExt/ResourceBundle-TUtilExtResource-TUtilExt-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = TUtilExtResource;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		C50BCDD624605ABA61B365DE65DEF38F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3600B6CA3B0965049704761AC6366219 /* TAppBase.debug.xcconfig */;
@@ -5014,6 +4943,41 @@
 			};
 			name = Release;
 		};
+		F20C1153442966F5B60F881E2FFD31E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85A722936ACDD0CE05E2C67071D9B19B /* TUtilExt.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TUtilExt/TUtilExt-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TUtilExt/TUtilExt-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/TUtilExt/TUtilExt.modulemap";
+				PRODUCT_MODULE_NAME = TUtilExt;
+				PRODUCT_NAME = TUtilExt;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		F4C90F34B9B2C37B3E30E7EAD192BAC6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF84628179DA3C6CE56FE62818870FA8 /* TPKeyboardAvoiding.release.xcconfig */;
@@ -5038,6 +5002,42 @@
 				MODULEMAP_FILE = "Target Support Files/TPKeyboardAvoiding/TPKeyboardAvoiding.modulemap";
 				PRODUCT_MODULE_NAME = TPKeyboardAvoiding;
 				PRODUCT_NAME = TPKeyboardAvoiding;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FE6C090234C107E7164BB637BEC5D002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FCE4DDADC6EC4448A5EB0603EE698B6 /* TUtilExt.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TUtilExt/TUtilExt-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TUtilExt/TUtilExt-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/TUtilExt/TUtilExt.modulemap";
+				PRODUCT_MODULE_NAME = TUtilExt;
+				PRODUCT_NAME = TUtilExt;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -5136,8 +5136,8 @@
 		892AC73083B96E0589467C8AC3857BDD /* Build configuration list for PBXNativeTarget "TUtilExt-TUtilExtResource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				78CC0AE27876734AA7B5D8BBC554B03B /* Debug */,
-				71C7D5755C673493F757FF2C99FBC866 /* Release */,
+				B62E30B1C52482A2A893FFF4FA9FA04D /* Debug */,
+				51FBF973AC0DD5A547772A2C68AD3C77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -5172,8 +5172,8 @@
 		B4DD34850789E982494BCC6B53455B2D /* Build configuration list for PBXNativeTarget "TUtilExt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				245752F817E241F02F832C8B42020CC4 /* Debug */,
-				5B68C3279F8A225E6A3706248A8CD2BE /* Release */,
+				F20C1153442966F5B60F881E2FFD31E7 /* Debug */,
+				FE6C090234C107E7164BB637BEC5D002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
