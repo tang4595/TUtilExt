@@ -409,3 +409,47 @@ extension Array where Iterator.Element == NSAttributedString {
         return bulletList
     }
 }
+
+public extension String {
+    var baseCurrency: String {
+        guard let endIndex = self.firstIndex(of: "_") else {return self}
+        return String(self[self.startIndex..<endIndex])
+    }
+    
+    var quoteCurrency: String {
+        guard let startIndex = self.firstIndex(of: "_") else {return self}
+        return String(self[self.index(startIndex, offsetBy: 1)...])
+    }
+}
+
+public extension String {
+    public enum Direction {
+        case normal, up, down
+        
+        public var color: UIColor {
+            switch self {
+            case .normal: return .c2
+            case .up: return .c5
+            case .down: return .c6
+            }
+        }
+        
+        public var iconName: String { self == .up ? "change_direction_up" : "change_direction_down" }
+    }
+    
+    var changeDirection: String.Direction {
+        if contains("+") {
+            return .up
+        } else if contains("-") {
+            return .down
+        }
+        return .normal
+    }
+    
+    var isUp: Bool { changeDirection == .up }
+    
+    var autoAdd: String {
+        guard !contains("-"), !contains("+") else { return self }
+        return "+\(self)"
+    }
+}
