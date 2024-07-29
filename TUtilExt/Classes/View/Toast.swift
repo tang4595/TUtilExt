@@ -120,9 +120,9 @@ public class Toast: UIView {
         public var value: UIView {
             switch self {
             case .window:
-                return UIApplication.topView()
+                return UIWindow.activeWindow ?? UIApplication.topWindow()
             case .topView(_):
-                return UIApplication.topWindow()
+                return UIApplication.topView()
             }
         }
         
