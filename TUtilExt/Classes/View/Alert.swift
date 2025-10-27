@@ -33,7 +33,7 @@ public protocol AppAlertProtocol {
 public class AppAlertView: UIView {
     
     private let keyboardPadding: CGFloat = 5.0
-    private let disposeBag = DisposeBag()
+    private let disposedBag = DisposeBag()
     private var alertView: (AppAlertProtocol & UIView)?
     private let subject = PublishSubject<Any>()
     
@@ -71,7 +71,7 @@ private extension AppAlertView {
         
         self.subject.subscribe(onNext: { [weak self] _ in
             self?.hideSelf()
-        }).disposed(by: self.disposeBag)
+        }).disposed(by: self.disposedBag)
     }
     
     func addContent(alert: AppAlertProtocol & UIView) {
@@ -92,7 +92,7 @@ private extension AppAlertView {
                 self?.subject.onError(AppError.ui(.custom(error: "Canceled")))
                 self?.hideSelf()
             }
-        }).disposed(by: self.disposeBag)
+        }).disposed(by: self.disposedBag)
         
         alert.layout { (make) in
             make.edges.equalToSuperview()

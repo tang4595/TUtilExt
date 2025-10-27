@@ -54,7 +54,7 @@ public class DropdownMenuView: UIView {
         return stackView
     }()
     
-    private let disposeBag = DisposeBag()
+    private let disposedBag = DisposeBag()
     private var tapBtn: UIView!
     
     private let subject = PublishSubject<Int>()
@@ -122,7 +122,7 @@ public class DropdownMenuView: UIView {
             .subscribe(onNext: { [weak self] _ in
                 self?.dismiss()
             })
-            .disposed(by: disposeBag)
+            .disposed(by: disposedBag)
     }
     
     required init?(coder: NSCoder) {
@@ -135,7 +135,7 @@ class DropdownMenuViewItem: UIView {
     let titleLabel = UILabel(text: "-", textColor: .c1, font: .md(14), textAlignment: .left, multiLines: false)
     let line = UIView.lineC6()
     var onTap: (() -> Void)?
-    let disposeBag = DisposeBag()
+    let disposedBag = DisposeBag()
     
     var isSelected: Bool = false {
         didSet {
@@ -153,7 +153,7 @@ class DropdownMenuViewItem: UIView {
             .subscribe(onNext: { [weak self] _ in
                 self?.onTap?()
             })
-            .disposed(by: disposeBag)
+            .disposed(by: disposedBag)
     }
     
     func uiSetup() {

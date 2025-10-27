@@ -13,7 +13,7 @@ import SnapKit
 
 public class TKeyboardAvoidingScrollView: TPKeyboardAvoidingScrollView {
     
-    private let disposeBag = DisposeBag()
+    private let disposedBag = DisposeBag()
     
     public var automaticallyUnfocus = true
     public var contentView: UIView = UIView()
@@ -43,6 +43,6 @@ public class TKeyboardAvoidingScrollView: TPKeyboardAvoidingScrollView {
         self.rx.willBeginDragging.subscribe(onNext: { [weak self] (_) in
             guard let self = self, self.automaticallyUnfocus else {return}
             self.endEditing(true)
-        }).disposed(by: disposeBag)
+        }).disposed(by: disposedBag)
     }
 }
