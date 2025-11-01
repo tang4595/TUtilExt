@@ -27,18 +27,18 @@ public func log(content: String, level: LogLevel) {
     print("Logger::[\(level)] \(Date()) \(content)")
 }
 
-public func logDebug(file: String = #file, line: Int = #line, content: String) {
-    log(content: "🔗 \(URL(string: file)?.lastPathComponent ?? file)[\(line)] : \(content)", level: .debug)
+public func logDebug(file: String = #file, line: Int = #line, function: String = #function, content: String) {
+    log(content: "🔗 \(URL(string: file)?.lastPathComponent ?? file)[\(line)][\(function)] : \(content)", level: .debug)
 }
 
-public func logInfo(file: String = #file, line: Int = #line, content: String) {
-    log(content: "♻️ \(URL(string: file)?.lastPathComponent ?? file)[\(line)] : \(content)", level: .info)
+public func logInfo(file: String = #file, line: Int = #line, function: String = #function, content: String) {
+    log(content: "♻️ \(URL(string: file)?.lastPathComponent ?? file)[\(line)][\(function)] : \(content)", level: .info)
 }
 
-public func logWarn(file: String = #file, line: Int = #line, content: String) {
-    log(content: "⚠️ \(URL(string: file)?.lastPathComponent ?? file)[\(line)] : \(content)", level: .warn)
+public func logWarn(file: String = #file, line: Int = #line, function: String = #function, content: String) {
+    log(content: "⚠️ \(URL(string: file)?.lastPathComponent ?? file)[\(line)][\(function)] : \(content)", level: .warn)
 }
 
-public func logError(file: String = #file, line: Int = #line, content: String) {
-    log(content: "❌ \(URL(string: file)?.lastPathComponent ?? file)[\(line)] : \(content)", level: .error)
+public func logError(file: String = #file, line: Int = #line, function: String = #function, content: String) {
+    log(content: "❌ \(URL(string: file)?.lastPathComponent ?? file)[\(line)][\(function)] : \(content)", level: .error)
 }
