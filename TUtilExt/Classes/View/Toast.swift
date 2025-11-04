@@ -11,20 +11,26 @@ import RxSwift
 import RxCocoa
 import TAppBase
 
+// MARK: Define
+
 fileprivate let dismissDelaySec: TimeInterval = 3
 fileprivate let loadingTimeoutSec: TimeInterval = 15
 
+public extension TimeInterval {
+    public static let loadingTimeoutMax: Self = 99999999
+}
+
 public struct ActionSheetDataItem {
-    
     public let title: String
     public let icon: UIImage?
 }
 
 public extension String {
-    
     static var defaultError: String { "Failed" }
     static var defaultSuccess: String { "Succeed" }
 }
+
+// MARK: Toast
 
 public class Toast: UIView {
     
@@ -217,7 +223,19 @@ public class Toast: UIView {
     }
 }
 
-// MARK: - Info
+// MARK: Getter
+
+public extension Toast {
+    
+    public static func isLoading(on container: UIView? = nil) -> Bool {
+        guard let targetContainer = container ?? UIApplication.shared.keyWindow else {
+            return false
+        }
+        return targetContainer.subviews.contains(where: { $0 is AppLoadingView })
+    }
+}
+
+// MARK: Info
 
 public extension Toast {
     
@@ -259,30 +277,37 @@ public extension Toast {
     }
 }
 
-// MARK: - ActionSheet
+// MARK: ActionSheet
 
-// MARK: - Loading
+// MARK: Loading
 
 public extension Toast {
     
-    private static func doLoading(_ show: Bool = true) {
+    private static func doLoading(_ show: Bool = true,
+                                  isUserInteractionEnabled: Bool = false,
+                                  timeout: TimeInterval? = nil) {
         loadingView?.dismiss()
         if show {
             loadingView = AppLoadingView(style: .white)
+            loadingView?.isUserInteractionEnabled = !isUserInteractionEnabled
             guard let loadingView = loadingView else {return}
             addToWindow(view: loadingView)
-            DispatchQueue.main.asyncAfter(deadline: .now() + loadingTimeoutSec, execute: {
+            
+            let timeout = timeout ?? loadingTimeoutSec
+            DispatchQueue.main.asyncAfter(deadline: .now() + timeout, execute: {
                 loadingView.dismiss()
             })
         }
     }
     
-    static func loading(_ show: Bool = true) {
+    static func loading(_ show: Bool = true,
+                        isUserInteractionEnabled: Bool = false,
+                        timeout: TimeInterval? = nil) {
         if DispatchQueue.isMainQueue {
-            doLoading(show)
+            doLoading(show, isUserInteractionEnabled: isUserInteractionEnabled, timeout: timeout)
         } else {
             DispatchQueue.main.async {
-                doLoading(show)
+                doLoading(show, isUserInteractionEnabled: isUserInteractionEnabled, timeout: timeout)
             }
         }
     }
