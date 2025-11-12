@@ -7,10 +7,10 @@
 
 import Foundation
 
-public let enableLog = isDebug
-public let enableApiLog = isDebug
+public let enableLog = Bundle.isDebug
+public let enableApiLog = Bundle.isDebug
 
-public let logLevel: LogLevel = isRelease ? logLevelRelease : .debug
+public let logLevel: LogLevel = Bundle.isRelease ? logLevelRelease : .debug
 public let logLevelRelease: LogLevel = .error
 
 public enum LogLevel: Int {
@@ -23,7 +23,7 @@ public enum LogLevel: Int {
 
 public func log(content: String, level: LogLevel) {
     guard enableLog else {return}
-    guard level.rawValue >= (isRelease ? logLevelRelease.rawValue : logLevel.rawValue) else {return}
+    guard level.rawValue >= (Bundle.isRelease ? logLevelRelease.rawValue : logLevel.rawValue) else {return}
     print("Logger::[\(level)] \(Date()) \(content)")
 }
 
