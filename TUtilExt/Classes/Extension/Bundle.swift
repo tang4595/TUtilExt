@@ -8,17 +8,17 @@
 import Foundation
 import TAppBase
 
-var isDebug: Bool {
-    #if DEBUG
-        return true
-    #else
-        return false
-    #endif
-}
-
-var isRelease = !isDebug
-
 public extension Bundle {
+    
+    public static var isDebug: Bool {
+        #if DEBUG
+            return true
+        #else
+            return false
+        #endif
+    }
+
+    public static var isRelease = !isDebug
     
     var displayName: String {
         return infoDictionary?["CFBundleDisplayName"] as? String ?? ""
